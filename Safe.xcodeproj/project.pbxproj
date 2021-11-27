@@ -19,6 +19,7 @@
 		F8F5CF3E27521C5C00EF982B /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5CF3D27521C5C00EF982B /* DataModel.swift */; };
 		F8F5CF42275259E500EF982B /* CustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5CF40275259E500EF982B /* CustomCell.swift */; };
 		F8F5CF43275259E500EF982B /* CustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F8F5CF41275259E500EF982B /* CustomCell.xib */; };
+		F8F5CF472752613F00EF982B /* AutoLoginProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8F5CF462752613F00EF982B /* AutoLoginProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		F8F5CF3D27521C5C00EF982B /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		F8F5CF40275259E500EF982B /* CustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCell.swift; sourceTree = "<group>"; };
 		F8F5CF41275259E500EF982B /* CustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomCell.xib; sourceTree = "<group>"; };
+		F8F5CF462752613F00EF982B /* AutoLoginProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutoLoginProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 		73FF829125779AE50003748D /* Safe */ = {
 			isa = PBXGroup;
 			children = (
+				F8F5CF452752611F00EF982B /* Protocol */,
 				F8F5CF3F2752599000EF982B /* XibFiles */,
 				F8F5CF3A2752131300EF982B /* Models */,
 				7343A1182578F41900AEC420 /* AppData */,
@@ -115,6 +118,14 @@
 				F8F5CF41275259E500EF982B /* CustomCell.xib */,
 			);
 			path = XibFiles;
+			sourceTree = "<group>";
+		};
+		F8F5CF452752611F00EF982B /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				F8F5CF462752613F00EF982B /* AutoLoginProtocol.swift */,
+			);
+			path = Protocol;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 				73FF829325779AE50003748D /* AppDelegate.swift in Sources */,
 				73FF829525779AE50003748D /* SceneDelegate.swift in Sources */,
 				F8F5CF42275259E500EF982B /* CustomCell.swift in Sources */,
+				F8F5CF472752613F00EF982B /* AutoLoginProtocol.swift in Sources */,
 				F8F5CF3E27521C5C00EF982B /* DataModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

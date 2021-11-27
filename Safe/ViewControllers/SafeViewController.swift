@@ -9,10 +9,12 @@ import UIKit
 
 class SafeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource
 {
-
     @IBOutlet weak var safeTableView: UITableView!
     @IBOutlet weak var autoLoginSwitch: UISwitch!
     
+    var autoLoginState: Bool = false
+    
+    var delegate: AutoLoginProtocol?
     
     override func viewDidLoad()
     {
@@ -23,6 +25,8 @@ class SafeViewController: UIViewController, UITableViewDelegate, UITableViewData
         safeTableView.register(UINib(nibName: "CustomCell", bundle: Bundle.main), forCellReuseIdentifier: "Cell")
         
         UITableView.appearance().backgroundColor = .clear
+        
+        autoLoginSwitch.isOn = autoLoginState
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
@@ -43,8 +47,11 @@ class SafeViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
-    @IBAction func switchWasToggled(_ sender: Any) {
+    @IBAction func switchWasToggled(_ sender: Any)
+    {
+        autoLoginState = !autoLoginState
+        autoLoginSwitch.isOn = autoLoginState
+        
+        delegate?.enableAutoLogin(value: autoLoginState)
     }
-    
-    
 }

@@ -7,8 +7,8 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-   
+class ViewController: UIViewController, AutoLoginProtocol, UITextFieldDelegate
+{
     @IBOutlet weak var passwordContainerView: UIView!
     @IBOutlet weak var passwordTopLabel: UILabel!
     @IBOutlet weak var passwordField: UITextField!
@@ -16,7 +16,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var verticalStackConstraint: NSLayoutConstraint!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         
         //MARK: Setup the corner radius for login button
@@ -27,6 +28,8 @@ class ViewController: UIViewController {
         logInButton.clipsToBounds = true
         
         SetupElementsState()
+        
+        passwordField.delegate = self
     }
     
     private func SetupElementsState()
@@ -84,6 +87,22 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    func enableAutoLogin(value: Bool)
+    {
+        UserDefaultsService.Instance.autoLogin = value
+        autoLoginSwitch.isOn = value
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?)
+    {
+        if segue.identifier == "GoToSafe"
+        {
+            let destination = segue.destination as! SafeViewController
+            destination.delegate = self
+            destination.autoLoginState = autoLoginSwitch.isOn
+        }
+    }
 
     @IBAction func aButtonWasTapped( sender: (UIButton) )
     {
@@ -100,5 +119,11 @@ class ViewController: UIViewController {
         
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool
+    {
+        HandlePassword()
+        
+        return true
+    }
 }
 
