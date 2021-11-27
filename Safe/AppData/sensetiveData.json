@@ -1,0 +1,37 @@
+[
+{
+  "userName": "codeMaster",
+  "password": "CodeNinja2020---$%",
+  "siteName": "https://github.com"
+},
+{
+  "userName": "myFacebook@gmail.com",
+  "password": "myFaceBookPassWord<?>",
+  "siteName": "https://Facebook.com"
+},
+{
+  "userName": "personalMail",
+  "password": "neverUseTheSamePassWord@#$",
+  "siteName": "https://gmail.com"
+},
+{
+  "userName": "myInstagram",
+  "password": "thisPAssForInsta(00---$%",
+  "siteName": "https://instagram.com"
+},
+{
+  "userName": "@realMySelf",
+  "password": "ThisIsMyTwitterPassWord1234",
+  "siteName": "https://twitter.com"
+},
+{
+  "userName": "firstHotmailEver",
+  "password": "SimplePass123456",
+  "siteName": "https://hotmail.com"
+},
+{
+  "userName": "onlineBank.UserName",
+  "password": "myPassForMyBankingAcount",
+  "siteName": "https://MyOnlineBank.com"
+}
+]
