@@ -23,21 +23,79 @@ class ViewController: UIViewController {
         passwordContainerView.layer.cornerRadius = 15
         passwordContainerView.clipsToBounds = true
         
+        logInButton.layer.cornerRadius = 15
+        logInButton.clipsToBounds = true
         
+        SetupElementsState()
     }
     
-
-    //MARK: Handeling appp events when user interacts with the login button
-    @IBAction func aButtonWasTapped( sender: (UIButton) ) {
-        
-        switch sender.tag {
-        case 0 :
-            print("This is the log in button")
+    private func SetupElementsState()
+    {
+        if(UserDefaultsService.Instance.isPasswordSet)
+        {
+            autoLoginSwitch.isOn = UserDefaultsService.Instance.autoLogin
             
-        case 1:
-            print("This is the Auto login switch controller")
-        
-        default: break
+            if(UserDefaultsService.Instance.autoLogin)
+            {
+                passwordField.text = UserDefaultsService.Instance.password
+                
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1.0) {
+                    [weak self] in
+                    
+                    self?.performSegue(withIdentifier: "GoToSafe", sender: nil)
+                }
+            }
+            else
+            {
+                passwordField.text = ""
+                passwordTopLabel.text = "Enter a password"
+            }
+        }
+        else
+        {
+            passwordTopLabel.text = "Choose a password"
+        }
+    }
+    
+    private func HandlePassword()
+    {
+        if(UserDefaultsService.Instance.isPasswordSet)
+        {
+            if(!passwordField.text!.isEmpty)
+            {
+                if(passwordField.text! == UserDefaultsService.Instance.password)
+                {
+                    performSegue(withIdentifier: "GoToSafe", sender: nil)
+                }
+                else
+                {
+                    passwordTopLabel.text = "Wrong password!"
+                }
+            }
+        }
+        else
+        {
+            if(!passwordField.text!.isEmpty)
+            {
+                UserDefaultsService.Instance.password = passwordField.text!
+                UserDefaultsService.Instance.isPasswordSet = true
+                
+                performSegue(withIdentifier: "GoToSafe", sender: nil)
+            }
+        }
+    }
+
+    @IBAction func aButtonWasTapped( sender: (UIButton) )
+    {
+        switch sender.tag
+        {
+            case 0 :
+                HandlePassword()
+                
+            case 1:
+                UserDefaultsService.Instance.autoLogin = self.autoLoginSwitch.isOn
+            
+            default: break
         }
         
     }
