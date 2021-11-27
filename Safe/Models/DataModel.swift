@@ -18,7 +18,7 @@ func load<T: Codable>(fileName: String) -> T
 {
     let data: Data
     
-    guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "else") else
+    guard let fileURL = Bundle.main.url(forResource: fileName, withExtension: "json") else
     {
         fatalError("Couldn't find file")
     }
